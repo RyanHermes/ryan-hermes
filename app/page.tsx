@@ -1,79 +1,70 @@
 'use client'
 
-import Link from 'next/link'
-import { majorMonoDisplay } from './fonts'
-import { useState, useEffect } from 'react'
+import Header from '@/components/Header'
+import { Projects } from '@/components/Projects'
+import { TimelineInfo } from '@/components/TimelineInfo'
 import { AuroraBackground } from '@/components/ui/aurora-background'
-import { TypewriterEffectSmooth } from '@/components/ui/typewriter-effect'
+import { FlipWords } from '@/components/ui/flip-words'
+import { motion } from 'framer-motion'
+import { cabin, redditMono } from './fonts'
+
+const fadeInVariants = {
+  hidden: { opacity: 0, x: -25 },
+  visible: { opacity: 1, x: 0, transition: { duration: 1, delay: 0.5 } },
+}
+
+const AnimationVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1, delay: 0.5 } },
+}
 
 export default function Home() {
-  const [isScrolled, setIsScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
   return (
     <main>
-      <header
-        className={`flex items-center justify-between bg-black p-4 transition-transform duration-300 ${isScrolled ? '-translate-y-full' : 'translate-y-0'}`}
-      >
-        <div className="flex items-center">
-          <h1
-            className={`${majorMonoDisplay.className} ml-4 text-xl font-bold`}
+      <Header />
+      <div>
+        <AuroraBackground>
+          <motion.div
+            className={`${redditMono.className} absolute m-4 text-2xl text-neutral-400 lg:text-4xl xl:text-6xl 2xl:text-8xl`}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={AnimationVariants}
           >
-            Ryan Hermes
-          </h1>
+            <FlipWords
+              words={[
+                'Engineering',
+                ' Developing',
+                ' Innovating',
+                '  Designing',
+                '  Enhancing',
+              ]}
+            />
+            the world, <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;one line at a time.
+          </motion.div>
+        </AuroraBackground>
+        <div className="bg-zinc-900">
+          <motion.h1
+            className={`${cabin.className} px-4 text-2xl text-white md:px-8 lg:px-10 lg:text-4xl xl:text-6xl 2xl:text-8xl`}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInVariants}
+          >
+            Hello, I'm <span className="text-neutral-400">Ryan Hermes</span>
+          </motion.h1>
         </div>
-        <nav>
-          <ul className="m-0 flex list-none p-0">
-            <li className="mx-4">
-              <button className="duration-400 transform rounded-lg border border-black bg-transparent px-6 py-2 font-bold text-black shadow-[0_0_0_3px_#000000_inset] transition hover:-translate-y-1 dark:border-white dark:text-white">
-                <Link href="/">Home</Link>
-              </button>
-            </li>
-            <li className="mx-4">
-              <button className="duration-400 transform rounded-lg border border-black bg-transparent px-6 py-2 font-bold text-black shadow-[0_0_0_3px_#000000_inset] transition hover:-translate-y-1 dark:border-white dark:text-white">
-                <Link href="/about">About</Link>
-              </button>
-            </li>
-            <li className="mx-4">
-              <button className="duration-400 transform rounded-lg border border-black bg-transparent px-6 py-2 font-bold text-black shadow-[0_0_0_3px_#000000_inset] transition hover:-translate-y-1 dark:border-white dark:text-white">
-                <Link href="/contact">Contact</Link>
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <AuroraBackground
-        children={
-          <div className="relative flex flex-col items-center justify-center gap-4 px-4">
-            <div className="text-center text-3xl font-bold md:text-7xl dark:text-white">
-              Coming Soon.
-            </div>
-            <div className="py-4 text-base font-extralight md:text-4xl dark:text-neutral-200">
-              Coming Soon.
-            </div>
-            <button className="w-fit rounded-full bg-black px-4 py-2 text-white dark:bg-white dark:text-black">
-              Coming Soon.
-            </button>
-            <TypewriterEffectSmooth words={[{ text: 'Coming Soon.' }]} />
-          </div>
-        }
-      />
-      <div className="bg-zinc-900">
-        <div className="h-screen"></div> {/* Added space for testing scroll */}
+      </div>
+      <div id="experiences">
+        <div>
+          <TimelineInfo />
+        </div>
+      </div>
+      <div id="projects" className="flex items-center justify-center py-10">
+        <div className="w-full max-w-4xl">
+          <Projects />
+        </div>
       </div>
     </main>
   )
