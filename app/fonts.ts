@@ -6,11 +6,9 @@ export const majorMonoDisplay = Major_Mono_Display({
 })
 
 export const redditMono = Reddit_Mono({
-  weight: '400',
   subsets: ['latin'],
 })
 
 export const cabin = Cabin({
-  weight: '400',
   subsets: ['latin'],
 })
