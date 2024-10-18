@@ -52,7 +52,8 @@ export default function Home() {
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeInVariants}
           >
-            Hello, I'm <span className="text-neutral-400">Ryan Hermes</span>
+            Hello, I&apos;m{' '}
+            <span className="text-neutral-400">Ryan Hermes</span>
           </motion.h1>
         </div>
       </div>

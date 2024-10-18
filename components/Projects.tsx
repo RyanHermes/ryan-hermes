@@ -1,24 +1,31 @@
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Image from 'next/image'
+import Link from 'next/link'
+
 const projects = [
   {
     title: 'Escape Java',
     description: 'A Java3D project designed to simulate an escape room.',
-    imageUrl: 'escapejava.png',
+    imageUrl: '/escapejava.png', // Ensure the path is correct
     team: [
       { name: 'Tanzim Hossain', github: 'https://github.com/tanzimfh' },
       { name: 'Borhan Saflo', github: 'https://github.com/BorhanSaflo' },
       { name: 'Yousef Kart', github: 'https://github.com/YousefKart' },
       { name: 'Laila Albalkhi', github: 'https://github.com/lailaalbalkhi' },
     ],
+    gitUrl: 'https://github.com/BorhanSaflo/EscapeJava',
   },
   {
     title: 'Tourify',
     description: 'A social travel Android mobile application.',
-    imageUrl: 'tourify.png',
+    imageUrl: '/tourify.png', // Ensure the path is correct
     team: [
       { name: 'Borhan Saflo', github: 'https://github.com/BorhanSaflo' },
       { name: 'Yousef Kart', github: 'https://github.com/YousefKart' },
       { name: 'Cam Vandy', github: 'https://github.com/camvandy' },
     ],
+    gitUrl: 'https://github.com/BorhanSaflo/tourify-android-app',
   },
 ]
 
@@ -34,13 +41,24 @@ export function Projects() {
       <div className="mt-10 grid grid-cols-1 justify-center gap-10 md:grid-cols-2">
         {projects.map((project, index) => (
           <div key={index} className="flex flex-col items-center">
-            <img
+            <Image
               src={project.imageUrl}
               alt={project.title}
+              width={300}
+              height={200}
               className="h-64 w-full rounded-lg object-cover shadow-lg"
             />
             <h3 className="mt-4 text-xl font-bold text-neutral-900 dark:text-white">
-              {project.title}
+              <Link href={project.gitUrl} legacyBehavior passHref>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center"
+                >
+                  <b>{project.title}</b>
+                  <FontAwesomeIcon icon={faExternalLinkAlt} className="ml-2" />
+                </a>
+              </Link>
             </h3>
             <p className="mt-2 text-center text-sm text-neutral-700 dark:text-neutral-400">
               {project.description}
