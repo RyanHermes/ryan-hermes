@@ -18,6 +18,11 @@ const AnimationVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 1, delay: 0.5 } },
 }
 
+const ProjectsVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1, delay: 0.5 } },
+}
+
 export default function Home() {
   return (
     <main>
@@ -63,9 +68,15 @@ export default function Home() {
         </div>
       </div>
       <div id="projects" className="flex items-center justify-center py-10">
-        <div className="w-full max-w-4xl">
+        <motion.div
+          className="w-full max-w-4xl"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={ProjectsVariants}
+        >
           <Projects />
-        </div>
+        </motion.div>
       </div>
     </main>
   )
