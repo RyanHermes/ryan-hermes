@@ -5,20 +5,20 @@ import { Projects } from '@/components/Projects'
 import { TimelineInfo } from '@/components/TimelineInfo'
 import { AuroraBackground } from '@/components/ui/aurora-background'
 import { FlipWords } from '@/components/ui/flip-words'
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import { cabin, redditMono } from './fonts'
 
-const fadeInVariants = {
+const fadeInVariants: Variants = {
   hidden: { opacity: 0, x: -25 },
   visible: { opacity: 1, x: 0, transition: { duration: 1, delay: 0.5 } },
 }
 
-const AnimationVariants = {
+const AnimationVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 1, delay: 0.5 } },
 }
 
-const ProjectsVariants = {
+const ProjectsVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 1, delay: 0.5 } },
 }
@@ -30,7 +30,7 @@ export default function Home() {
       <div>
         <AuroraBackground>
           <motion.div
-            className={`${redditMono.className} absolute m-4 text-2xl text-neutral-400 lg:text-4xl xl:text-6xl 2xl:text-8xl`}
+            className={`${redditMono.className} absolute m-4 text-neutral-400 ~text-2xl/8xl`}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -51,7 +51,7 @@ export default function Home() {
         </AuroraBackground>
         <div className="bg-zinc-900">
           <motion.h1
-            className={`${cabin.className} px-4 text-2xl text-white md:px-8 lg:px-10 lg:text-4xl xl:text-6xl 2xl:text-8xl`}
+            className={`${cabin.className} px-2 text-white ~text-2xl/9xl`}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -67,7 +67,10 @@ export default function Home() {
           <TimelineInfo />
         </div>
       </div>
-      <div id="projects" className="flex items-center justify-center py-10">
+      <div
+        id="projects"
+        className="flex items-center justify-center bg-black py-10"
+      >
         <motion.div
           className="w-full max-w-4xl"
           initial="hidden"
