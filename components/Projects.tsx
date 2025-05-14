@@ -32,10 +32,10 @@ const projects = [
 export function Projects() {
   return (
     <div className="flex w-full flex-col items-center justify-center p-10">
-      <h2 className="relative z-20 bg-gradient-to-b from-neutral-900 to-neutral-700 bg-clip-text py-2 text-center font-sans text-2xl font-bold tracking-tight text-transparent md:py-10 md:text-4xl lg:text-7xl dark:from-neutral-600 dark:to-white">
+      <h2 className="relative z-20 bg-gradient-to-b from-neutral-900 to-neutral-700 bg-clip-text py-2 text-center font-sans text-2xl font-bold tracking-tight text-transparent dark:from-neutral-600 dark:to-white md:py-10 md:text-4xl lg:text-7xl">
         Projects
       </h2>
-      <p className="mx-auto max-w-xl text-center text-sm text-neutral-700 md:text-lg dark:text-neutral-400">
+      <p className="mx-auto max-w-xl text-center text-sm text-neutral-700 dark:text-neutral-400 md:text-lg">
         Spanning tech and content, reflect adaptability and growth.
       </p>
       <div className="mt-10 grid grid-cols-1 justify-center gap-10 md:grid-cols-2">
