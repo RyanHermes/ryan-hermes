@@ -49,15 +49,14 @@ export function Projects() {
               className="h-64 w-full rounded-lg object-cover shadow-lg"
             />
             <h3 className="mt-4 text-xl font-bold text-neutral-900 dark:text-white">
-              <Link href={project.gitUrl} legacyBehavior passHref>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center"
-                >
-                  <b>{project.title}</b>
-                  <FontAwesomeIcon icon={faExternalLinkAlt} className="ml-2" />
-                </a>
+              <Link
+                href={project.gitUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center"
+              >
+                <b>{project.title}</b>
+                <FontAwesomeIcon icon={faExternalLinkAlt} className="ml-2" />
               </Link>
             </h3>
             <p className="mt-2 text-center text-sm text-neutral-700 dark:text-neutral-400">

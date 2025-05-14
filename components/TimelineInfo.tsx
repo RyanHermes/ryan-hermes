@@ -11,15 +11,14 @@ export function TimelineInfo() {
       content: (
         <div>
           <div className="mb-8 text-xs font-normal text-neutral-800 dark:text-neutral-200 md:text-sm">
-            <Link href="https://mykoch.app/" legacyBehavior passHref>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center"
-              >
-                <b>KōCH Technologies</b>
-                <FontAwesomeIcon icon={faExternalLinkAlt} className="ml-2" />
-              </a>
+            <Link
+              href="https://mykoch.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center"
+            >
+              <b>KōCH Technologies</b>
+              <FontAwesomeIcon icon={faExternalLinkAlt} className="ml-2" />
             </Link>
             <br />
             <i>Frontend Web Developer · Internship</i>
@@ -67,15 +66,14 @@ export function TimelineInfo() {
             />
           </div>
           <div className="my-8 text-xs font-normal text-neutral-800 dark:text-neutral-200 md:text-sm">
-            <Link href="https://propertyrevive.ca/" legacyBehavior passHref>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center"
-              >
-                <b>Property Revive</b>
-                <FontAwesomeIcon icon={faExternalLinkAlt} className="ml-2" />
-              </a>
+            <Link
+              href="https://propertyrevive.ca/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center"
+            >
+              <b>Property Revive</b>
+              <FontAwesomeIcon icon={faExternalLinkAlt} className="ml-2" />
             </Link>
             <br />
             <i>Software Developer · Internship</i>
