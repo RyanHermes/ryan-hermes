@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+
 import { majorMonoDisplay } from '../app/fonts'
 import styles from '../styles/hamburgers.module.css'
 
