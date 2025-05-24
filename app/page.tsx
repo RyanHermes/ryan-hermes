@@ -1,11 +1,13 @@
 'use client'
 
+import { motion, Variants } from 'framer-motion'
+
 import Header from '@/components/Header'
 import { Projects } from '@/components/Projects'
 import { TimelineInfo } from '@/components/TimelineInfo'
 import { AuroraBackground } from '@/components/ui/aurora-background'
 import { FlipWords } from '@/components/ui/flip-words'
-import { motion, Variants } from 'framer-motion'
+
 import { cabin, redditMono } from './fonts'
 
 const fadeInVariants: Variants = {
