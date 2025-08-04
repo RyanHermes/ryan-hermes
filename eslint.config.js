@@ -1,30 +1,17 @@
-const importPlugin = require('eslint-plugin-import')
+const { FlatCompat } = require('@eslint/eslintrc')
+const nextPlugin = require('eslint-config-next')
+const path = require('path')
+const compat = new FlatCompat({
+  resolvePluginsRelativeTo: path.dirname(
+    require.resolve('eslint-config-next/package.json'),
+  ),
+})
 
 module.exports = [
+  ...compat.config(nextPlugin),
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
-    plugins: {
-      import: importPlugin,
-    },
     rules: {
-      'import/order': [
-        'error',
-        {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-            'type',
-          ],
-          pathGroups: [{ pattern: '@/**', group: 'internal' }],
-          pathGroupsExcludedImportTypes: ['builtin'],
-          'newlines-between': 'always',
-          alphabetize: { order: 'asc', caseInsensitive: true },
-        },
-      ],
+      // Your custom rules here
     },
   },
 ]
