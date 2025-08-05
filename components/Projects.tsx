@@ -1,38 +1,38 @@
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { config } from '@fortawesome/fontawesome-svg-core'
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import Image from 'next/image'
-import Link from 'next/link'
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import Image from "next/image";
+import Link from "next/link";
 
 // Prevent FontAwesome from dynamically adding its CSS since we imported it above
-config.autoAddCss = false
+config.autoAddCss = false;
 
 const projects = [
   {
-    title: 'Escape Java',
-    description: 'A Java3D project designed to simulate an escape room.',
-    imageUrl: '/escapejava.png', // Ensure the path is correct
+    title: "Escape Java",
+    description: "A Java3D project designed to simulate an escape room.",
+    imageUrl: "/escapejava.png", // Ensure the path is correct
     team: [
-      { name: 'Tanzim Hossain', github: 'https://github.com/tanzimfh' },
-      { name: 'Borhan Saflo', github: 'https://github.com/BorhanSaflo' },
-      { name: 'Yousef Kart', github: 'https://github.com/YousefKart' },
-      { name: 'Laila Albalkhi', github: 'https://github.com/lailaalbalkhi' },
+      { name: "Tanzim Hossain", github: "https://github.com/tanzimfh" },
+      { name: "Borhan Saflo", github: "https://github.com/BorhanSaflo" },
+      { name: "Yousef Kart", github: "https://github.com/YousefKart" },
+      { name: "Laila Albalkhi", github: "https://github.com/lailaalbalkhi" },
     ],
-    gitUrl: 'https://github.com/BorhanSaflo/EscapeJava',
+    gitUrl: "https://github.com/BorhanSaflo/EscapeJava",
   },
   {
-    title: 'Tourify',
-    description: 'A social travel Android mobile application.',
-    imageUrl: '/tourify.png', // Ensure the path is correct
+    title: "Tourify",
+    description: "A social travel Android mobile application.",
+    imageUrl: "/tourify.png", // Ensure the path is correct
     team: [
-      { name: 'Borhan Saflo', github: 'https://github.com/BorhanSaflo' },
-      { name: 'Yousef Kart', github: 'https://github.com/YousefKart' },
-      { name: 'Cam Vandy', github: 'https://github.com/camvandy' },
+      { name: "Borhan Saflo", github: "https://github.com/BorhanSaflo" },
+      { name: "Yousef Kart", github: "https://github.com/YousefKart" },
+      { name: "Cam Vandy", github: "https://github.com/camvandy" },
     ],
-    gitUrl: 'https://github.com/BorhanSaflo/tourify-android-app',
+    gitUrl: "https://github.com/BorhanSaflo/tourify-android-app",
   },
-]
+];
 
 export function Projects() {
   return (
@@ -93,5 +93,6 @@ export function Projects() {
         ))}
       </div>
     </div>
-  )
+  );
 }
+// Test comment

@@ -1,29 +1,29 @@
-'use client'
+"use client";
 
-import { motion, Variants } from 'framer-motion'
+import { motion, Variants } from "framer-motion";
 
-import Header from '@/components/Header'
-import { Projects } from '@/components/Projects'
-import { TimelineInfo } from '@/components/TimelineInfo'
-import { AuroraBackground } from '@/components/ui/aurora-background'
-import { FlipWords } from '@/components/ui/flip-words'
+import Header from "@/components/Header";
+import { Projects } from "@/components/Projects";
+import { TimelineInfo } from "@/components/TimelineInfo";
+import { AuroraBackground } from "@/components/ui/aurora-background";
+import { FlipWords } from "@/components/ui/flip-words";
 
-import { cabin, redditMono } from './fonts'
+import { cabin, redditMono } from "./fonts";
 
 const fadeInVariants: Variants = {
   hidden: { opacity: 0, x: -25 },
   visible: { opacity: 1, x: 0, transition: { duration: 1, delay: 0.5 } },
-}
+};
 
 const AnimationVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 1, delay: 0.5 } },
-}
+};
 
 const ProjectsVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 1, delay: 0.5 } },
-}
+};
 
 export default function Home() {
   return (
@@ -40,11 +40,11 @@ export default function Home() {
           >
             <FlipWords
               words={[
-                'Engineering',
-                ' Developing',
-                ' Innovating',
-                '  Designing',
-                '  Enhancing',
+                "Engineering",
+                " Developing",
+                " Innovating",
+                "  Designing",
+                "  Enhancing",
               ]}
             />
             the world, <br />
@@ -59,7 +59,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeInVariants}
           >
-            Hello, I&apos;m{' '}
+            Hello, I&apos;m{" "}
             <span className="text-neutral-400">Ryan Hermes</span>
           </motion.h1>
         </div>
@@ -84,5 +84,5 @@ export default function Home() {
         </motion.div>
       </div>
     </main>
-  )
+  );
 }

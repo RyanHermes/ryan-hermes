@@ -1,17 +1,18 @@
-const { FlatCompat } = require('@eslint/eslintrc')
-const nextPlugin = require('eslint-config-next')
-const path = require('path')
+const { FlatCompat } = require("@eslint/eslintrc");
+const js = require("@eslint/js");
+const path = require("path");
+
 const compat = new FlatCompat({
-  resolvePluginsRelativeTo: path.dirname(
-    require.resolve('eslint-config-next/package.json'),
-  ),
-})
+  baseDirectory: __dirname,
+  recommendedConfig: js.configs.recommended,
+  allConfig: js.configs.all,
+});
 
 module.exports = [
-  ...compat.config(nextPlugin),
+  ...compat.extends("next/core-web-vitals"),
   {
     rules: {
       // Your custom rules here
     },
   },
-]
+];

@@ -1,14 +1,14 @@
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Image from 'next/image'
-import Link from 'next/link'
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
+import Link from "next/link";
 
-import { Timeline } from '@/components/ui/timeline'
+import { Timeline } from "@/components/ui/timeline";
 
 export function TimelineInfo() {
   const data = [
     {
-      title: '2024',
+      title: "2024",
       content: (
         <div>
           <div className="mb-8 text-xs font-normal text-neutral-800 dark:text-neutral-200 md:text-sm">
@@ -42,7 +42,7 @@ export function TimelineInfo() {
       ),
     },
     {
-      title: '2023',
+      title: "2023",
       content: (
         <div>
           <div className="mb-8 text-xs font-normal text-neutral-800 dark:text-neutral-200 md:text-sm">
@@ -96,10 +96,10 @@ export function TimelineInfo() {
         </div>
       ),
     },
-  ]
+  ];
   return (
     <div className="w-full">
       <Timeline data={data} />
     </div>
-  )
+  );
 }
