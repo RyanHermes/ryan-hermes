@@ -43,24 +43,34 @@ export default function Header() {
       >
         <div className="flex items-center">
           <h1
-            className={`${majorMonoDisplay.className} ml-4 text-5xl font-bold`}
+            className={`${majorMonoDisplay.className} ml-4 cursor-default text-5xl font-bold`}
           >
             R
           </h1>
         </div>
         <nav>
           <ul className="m-0 flex list-none p-0">
-            <li className="mx-4 hidden md:block">
-              <Link href="#experiences">
-                <button className={buttonClass}>Experiences</button>
+            <li className="mx-4 hidden lg:block">
+              <Link href="#about">
+                <button className={buttonClass}>About</button>
               </Link>
             </li>
-            <li className="mx-4 hidden md:block">
+            <li className="mx-4 hidden lg:block">
+              <Link href="#skills">
+                <button className={buttonClass}>Skills</button>
+              </Link>
+            </li>
+            <li className="mx-4 hidden lg:block">
+              <Link href="#experiences">
+                <button className={buttonClass}>Experience</button>
+              </Link>
+            </li>
+            <li className="mx-4 hidden lg:block">
               <Link href="#projects">
                 <button className={buttonClass}>Projects</button>
               </Link>
             </li>
-            <li className="mx-4 md:hidden">
+            <li className="mx-4 lg:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className={`${styles.hamburger} ${styles["hamburger--collapse"]} ${isOpen ? styles["is-active"] : ""}`}
@@ -77,16 +87,34 @@ export default function Header() {
       <div
         className={`fixed inset-0 z-40 transform bg-black text-white transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "translate-x-full"
-        } md:hidden`}
+        } lg:hidden`}
       >
         <ul className="flex h-full flex-col items-center justify-center p-4">
+          <li className="my-2">
+            <Link
+              href="#about"
+              onClick={() => setIsOpen(false)}
+              className="font-bold"
+            >
+              About
+            </Link>
+          </li>
+          <li className="my-2">
+            <Link
+              href="#skills"
+              onClick={() => setIsOpen(false)}
+              className="font-bold"
+            >
+              Skills
+            </Link>
+          </li>
           <li className="my-2">
             <Link
               href="#experiences"
               onClick={() => setIsOpen(false)}
               className="font-bold"
             >
-              Experiences
+              Experience
             </Link>
           </li>
           <li className="my-2">

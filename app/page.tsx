@@ -2,8 +2,10 @@
 
 import { motion, Variants } from "framer-motion";
 
+import { About } from "@/components/About";
 import Header from "@/components/Header";
 import { Projects } from "@/components/Projects";
+import { Skills } from "@/components/Skills";
 import { TimelineInfo } from "@/components/TimelineInfo";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { FlipWords } from "@/components/ui/flip-words";
@@ -32,7 +34,7 @@ export default function Home() {
       <div>
         <AuroraBackground>
           <motion.div
-            className={`${redditMono.className} absolute m-4 text-neutral-400 ~text-2xl/8xl`}
+            className={`${redditMono.className} float absolute m-4 text-neutral-400 ~text-2xl/8xl`}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -51,7 +53,7 @@ export default function Home() {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;one line at a time.
           </motion.div>
         </AuroraBackground>
-        <div className="bg-zinc-900">
+        <div className="gradient-bg">
           <motion.h1
             className={`${cabin.className} px-2 text-white ~text-2xl/9xl`}
             initial="hidden"
@@ -59,12 +61,20 @@ export default function Home() {
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeInVariants}
           >
-            Hello, I&apos;m{" "}
-            <span className="text-neutral-400">Ryan Hermes</span>
+            Hi, I&apos;m{" "}
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-600 bg-clip-text text-transparent">
+              Ryan Hermes
+            </span>
           </motion.h1>
         </div>
       </div>
-      <div id="experiences">
+      <div id="about">
+        <About />
+      </div>
+      <div id="skills">
+        <Skills />
+      </div>
+      <div id="experiences" className="gradient-bg">
         <div>
           <TimelineInfo />
         </div>
