@@ -1,4 +1,0 @@
-{
-  "installCommand": "npx --yes pnpm@10 install",
-  "buildCommand": "pnpm next build"
-}
