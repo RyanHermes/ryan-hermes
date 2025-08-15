@@ -1,4 +1,7 @@
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Inter } from "next/font/google";
+config.autoAddCss = false;
 
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
@@ -45,7 +48,15 @@ export default function RootLayout({
       <body
         className={`${inter.className} flex min-h-screen flex-col bg-black`}
       >
-        <div className="flex-grow">{children}</div>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-neutral-800 focus:px-4 focus:py-2 focus:text-white"
+        >
+          Skip to content
+        </a>
+        <main id="main-content" className="flex-grow">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
