@@ -1,12 +1,13 @@
 "use client";
 
 import { redditMono } from "@/app/fonts";
+import { memo } from "react";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faArrowUp, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
-export function Footer() {
+function FooterComponent() {
   const year = new Date().getFullYear();
   return (
     <footer className="mt-16 border-t border-neutral-800 bg-black px-6 py-10 text-neutral-300">
@@ -148,4 +149,5 @@ export function Footer() {
   );
 }
 
+export const Footer = memo(FooterComponent);
 export default Footer;

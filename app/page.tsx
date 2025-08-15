@@ -2,11 +2,33 @@
 
 import { motion, Variants } from "framer-motion";
 
-import { About } from "@/components/About";
 import Header from "@/components/Header";
-import { Projects } from "@/components/Projects";
+import dynamic from "next/dynamic";
+import { About } from "@/components/About";
 import { Skills } from "@/components/Skills";
-import { TimelineInfo } from "@/components/TimelineInfo";
+// Dynamic imports to reduce initial bundle size
+const TimelineInfo = dynamic(
+  () => import("@/components/TimelineInfo").then((m) => m.TimelineInfo),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="py-20 text-center text-neutral-500">
+        Loading timeline…
+      </div>
+    ),
+  },
+);
+const Projects = dynamic(
+  () => import("@/components/Projects").then((m) => m.Projects),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="py-10 text-center text-neutral-500">
+        Loading projects…
+      </div>
+    ),
+  },
+);
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { FlipWords } from "@/components/ui/flip-words";
 
