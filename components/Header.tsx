@@ -34,33 +34,31 @@ export default function Header() {
     const MIN_DELTA = 8; // ignore micro scrolls
     const handleScroll = () => {
       const currentY = window.scrollY;
-      if (!tickingRef.current) {
-        window.requestAnimationFrame(() => {
-          const lastY = lastScrollYRef.current;
-          const delta = currentY - lastY;
-          const goingDown = delta > 0;
+      if (tickingRef.current) return;
+      tickingRef.current = true;
+      window.requestAnimationFrame(() => {
+        const lastY = lastScrollYRef.current;
+        const delta = currentY - lastY;
+        const goingDown = delta > 0;
+        let nextHidden = isHidden;
 
-          // Show if near top always
-          if (currentY < THRESHOLD_HIDE) {
-            setIsHidden(false);
+        if (currentY < THRESHOLD_HIDE) {
+          nextHidden = false;
+        } else if (Math.abs(delta) > MIN_DELTA) {
+          if (goingDown && !isOpen) {
+            nextHidden = true;
           } else {
-            if (Math.abs(delta) > MIN_DELTA) {
-              if (goingDown && !isOpen) {
-                setIsHidden(true);
-              } else {
-                setIsHidden(false);
-              }
-            }
+            nextHidden = false;
           }
-          lastScrollYRef.current = currentY;
-          tickingRef.current = false;
-        });
-        tickingRef.current = true;
-      }
+        }
+        if (nextHidden !== isHidden) setIsHidden(nextHidden);
+        lastScrollYRef.current = currentY;
+        tickingRef.current = false;
+      });
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isOpen]);
+  }, [isOpen, isHidden]);
 
   useEffect(() => {
     if (isOpen) {
