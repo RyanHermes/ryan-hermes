@@ -1,8 +1,8 @@
 "use client";
 
+import { useFadeInUp, useSlideInX, useStaggerChildren } from "@/lib/animations";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import {
-  faDownload,
   faEnvelope,
   faMapMarkerAlt,
   faPhone,
@@ -11,27 +11,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const fadeInVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.2 } },
-};
-
-const staggerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-};
-
 export function About() {
+  const fadeInVariants = useFadeInUp();
+  const staggerVariants = useStaggerChildren();
+  const itemVariants = useSlideInX();
+
   return (
     <div className="w-full bg-black py-20" id="about">
       <div className="mx-auto max-w-4xl px-6">
@@ -103,23 +87,6 @@ export function About() {
                   September 2021 - April 2025
                 </p>
                 <p className="text-sm text-neutral-400">Minor: Mathematics</p>
-                <p className="mt-2 text-lg font-semibold text-green-400">
-                  GPA: 4.0/4.0
-                </p>
-                <div className="mt-4 space-y-2">
-                  <Link
-                    href="/Ryan_Hermes_Resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 rounded-lg bg-blue-600 px-4 py-2 text-sm text-white transition-all duration-300 hover:scale-105 hover:bg-blue-700 hover:shadow-md"
-                  >
-                    <FontAwesomeIcon icon={faDownload} className="h-4 w-4" />
-                    <span>Download Resume</span>
-                  </Link>
-                  <p className="text-xs text-neutral-400">
-                    General version - contact me for role-specific resumes
-                  </p>
-                </div>
               </motion.div>
             </div>
 
@@ -179,7 +146,7 @@ export function About() {
                     className="h-5 w-5 text-blue-400"
                   />
                   <Link
-                    href="https://www.linkedin.com/in/ryan--hermes"
+                    href="https://www.linkedin.com/in/ryan--hermes/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-neutral-300 transition-colors hover:text-blue-400"

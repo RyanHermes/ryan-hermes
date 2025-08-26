@@ -1,62 +1,44 @@
 "use client";
 
+import { useFadeInUp, useSlideInX, useStaggerChildren } from "@/lib/animations";
 import { motion } from "framer-motion";
 
+// Generalized, recruiter-friendly grouping. Focuses on core, tooling, and optional domains.
 const skills = {
-  "Programming Languages": [
+  Core: [
     "Python",
     "Java",
-    "C/C++",
-    "JavaScript",
     "TypeScript",
-  ],
-  "Frameworks & Tools": [
+    "C/C++",
     "React",
     "Next.js",
-    "Express.js",
+    "Express",
+    "PostgreSQL",
+    "Docker",
+    "AWS",
+  ],
+  "Tooling & Infra": [
+    "Git",
+    "GitHub Actions",
     "Tailwind CSS",
+    "Azure (Bicep)",
+    "SQLite",
     "Figma",
   ],
-  "Cloud & Infrastructure": [
-    "AWS (Lambda, S3, EC2)",
-    "Azure (IaC with Bicep)",
-    "Docker",
-    "PostgreSQL",
-    "GitHub Actions",
-  ],
-  "Mobile Development": ["Android Development", "React Native", "Kotlin"],
-  "Additional Technologies": [
-    "SQLite",
-    "Git",
-    "Vercel",
-    "CI/CD",
-    "3D Graphics (Java3D)",
-  ],
-  "Development Practices": [
-    "Agile Development",
-    "Test-Driven Development",
-    "Responsive Design",
+  Mobile: ["Kotlin (Android)", "React Native"],
+  "Additional Exposure": [
     "Performance Optimization",
-    "API Development",
+    "Responsive Design",
+    "API Design",
   ],
-};
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
+} as const;
+type SkillsCategory = keyof typeof skills;
 
 export function Skills() {
+  const fadeIn = useFadeInUp();
+  const containerVariants = useStaggerChildren();
+  const itemVariants = useSlideInX(20);
+
   return (
     <div className="w-full bg-zinc-900 py-20">
       <div className="mx-auto max-w-6xl px-6">
@@ -70,6 +52,10 @@ export function Skills() {
           Skills & Technologies
         </motion.h2>
 
+        <p className="mx-auto mb-10 max-w-2xl cursor-default text-center text-sm text-neutral-400">
+          Representative core stack — additional technologies adopted as needed
+          per project.
+        </p>
         <motion.div
           className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
           variants={containerVariants}

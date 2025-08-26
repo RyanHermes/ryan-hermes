@@ -1,11 +1,11 @@
 "use client";
 
 import { redditMono } from "@/app/fonts";
-import { memo } from "react";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faArrowUp, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import { memo } from "react";
 
 function FooterComponent() {
   const year = new Date().getFullYear();
@@ -61,16 +61,6 @@ function FooterComponent() {
                   Projects
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/Ryan_Hermes_Resume.pdf"
-                  target="_blank"
-                  rel="noopener"
-                  className="transition-colors hover:text-white"
-                >
-                  Resume
-                </Link>
-              </li>
             </ul>
           </div>
           <div>
@@ -80,7 +70,7 @@ function FooterComponent() {
             <ul className="space-y-1 text-sm">
               <li>
                 <a
-                  href="mailto:ryan.hermes.dev@gmail.com"
+                  href="mailto:ryanhermes@pm.me"
                   className="group flex items-center gap-2 transition-colors hover:text-white"
                   aria-label="Email"
                 >
@@ -108,7 +98,7 @@ function FooterComponent() {
               </li>
               <li>
                 <a
-                  href="https://www.linkedin.com/in/ryan-hermes"
+                  href="https://www.linkedin.com/in/ryan--hermes/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center gap-2 transition-colors hover:text-white"

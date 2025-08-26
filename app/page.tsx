@@ -2,10 +2,12 @@
 
 import { motion, Variants } from "framer-motion";
 
-import Header from "@/components/Header";
-import dynamic from "next/dynamic";
 import { About } from "@/components/About";
+import Header from "@/components/Header";
 import { Skills } from "@/components/Skills";
+import { AuroraBackground } from "@/components/ui/aurora-background";
+import { FlipWords } from "@/components/ui/flip-words";
+import dynamic from "next/dynamic";
 // Dynamic imports to reduce initial bundle size
 const TimelineInfo = dynamic(
   () => import("@/components/TimelineInfo").then((m) => m.TimelineInfo),
@@ -29,8 +31,6 @@ const Projects = dynamic(
     ),
   },
 );
-import { AuroraBackground } from "@/components/ui/aurora-background";
-import { FlipWords } from "@/components/ui/flip-words";
 
 import { cabin, redditMono } from "./fonts";
 
@@ -101,20 +101,15 @@ export default function Home() {
           <TimelineInfo />
         </div>
       </div>
-      <div
-        id="projects"
-        className="flex items-center justify-center bg-black py-10"
+      {/* Projects section: removed outer max-width wrapper so internal section can span available width */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={ProjectsVariants}
       >
-        <motion.div
-          className="w-full max-w-4xl"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={ProjectsVariants}
-        >
-          <Projects />
-        </motion.div>
-      </div>
+        <Projects />
+      </motion.div>
     </main>
   );
 }
