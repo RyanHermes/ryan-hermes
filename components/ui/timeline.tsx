@@ -30,7 +30,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <div
-      className="w-full bg-white font-sans dark:bg-neutral-950 md:px-10"
+      className="isolate w-full bg-white font-sans dark:bg-neutral-950 md:px-10"
       ref={containerRef}
     >
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10">
@@ -39,18 +39,16 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         </h2>
         <p className="max-w-sm text-sm text-neutral-700 dark:text-neutral-300 md:text-base">
           Crafted versatility through professional ventures.
-          {/* Crafted versatility through freelancing and professional ventures. */}
-          {/* Refined through freelancing, sharpened by professional experience. */}
         </p>
       </div>
 
-      <div ref={ref} className="relative mx-auto max-w-7xl pb-20">
+      <div ref={ref} className="relative mx-auto max-w-7xl pb-20 md:pb-24">
         {data.map((item, index) => (
           <div
             key={index}
             className="flex justify-start pt-10 md:gap-10 md:pt-40"
           >
-            <div className="sticky top-40 z-40 flex max-w-xs flex-col items-center self-start md:w-full md:flex-row lg:max-w-sm">
+            <div className="flex max-w-xs flex-col items-center self-start md:sticky md:top-40 md:z-10 md:w-full md:flex-row lg:max-w-sm">
               <div className="absolute left-3 flex h-10 w-10 items-center justify-center rounded-full bg-white dark:bg-black md:left-3">
                 <div className="h-4 w-4 rounded-full border border-neutral-300 bg-neutral-200 p-2 dark:border-neutral-700 dark:bg-neutral-800" />
               </div>

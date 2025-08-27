@@ -71,15 +71,18 @@ export function Projects() {
   const heading = useFadeInUp(0.1, 40);
 
   return (
-    <section className="relative w-full overflow-hidden py-20" id="projects">
+    <section
+      className="relative w-full overflow-hidden py-24 md:py-32"
+      id="projects"
+    >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.12),transparent_80%)]" />
-      <div className="mx-auto w-full max-w-[2200px] px-4 md:px-10">
+      <div className="mx-auto w-full max-w-[2200px] px-5 md:px-14 lg:px-24">
         <motion.h2
           variants={heading}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.4 }}
-          className="relative z-10 bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-center text-4xl font-bold tracking-tight text-transparent md:text-6xl"
+          className="relative z-10 bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-center text-4xl font-bold tracking-tight text-transparent md:text-6xl lg:text-7xl"
         >
           Featured Projects
         </motion.h2>
@@ -88,7 +91,7 @@ export function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative z-10 mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-neutral-400 md:text-base"
+          className="relative z-10 mx-auto mt-6 max-w-3xl text-center text-sm leading-relaxed text-neutral-400 md:text-base lg:text-lg"
         >
           A concise selection highlighting breadth (frontend, backend, mobile,
           3D) and depth in modern web engineering.
@@ -99,7 +102,7 @@ export function Projects() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="mt-14 grid w-full gap-8 [grid-template-columns:repeat(auto-fill,minmax(300px,1fr))]"
+          className="mt-20 grid w-full gap-10 [grid-template-columns:repeat(auto-fill,minmax(320px,1fr))]"
         >
           {projects.map((project) => (
             <motion.article
