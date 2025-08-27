@@ -5,6 +5,7 @@ config.autoAddCss = false;
 
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -60,6 +61,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
