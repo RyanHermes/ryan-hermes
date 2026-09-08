@@ -32,12 +32,12 @@ export default function Header() {
   }, [isOpen]);
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-neutral-950/90 backdrop-blur-lg">
-        <div className="site-container flex h-20 items-center justify-between gap-6">
+      <header className="fixed inset-x-0 top-0 z-40 bg-[#111111]/85 backdrop-blur-lg">
+        <div className="site-container flex h-[4.5rem] items-center justify-between gap-6">
           <a
             href="#top"
             aria-label="Ryan Hermes, back to top"
-            className={`${majorMonoDisplay.className} text-4xl text-white`}
+            className={`${majorMonoDisplay.className} inline-flex min-h-11 min-w-11 items-center text-2xl text-neutral-200 transition-opacity hover:opacity-70`}
           >
             R
           </a>
@@ -45,10 +45,7 @@ export default function Header() {
             <ul className="flex items-center gap-8">
               {links.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="inline-flex min-h-11 items-center text-sm text-neutral-300 transition-colors hover:text-white"
-                  >
+                  <a href={link.href} className="text-link">
                     {link.label}
                   </a>
                 </li>
@@ -67,7 +64,7 @@ export default function Header() {
             aria-haspopup="dialog"
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-neutral-700 px-3 text-sm lg:hidden"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center text-sm text-neutral-300 transition-colors hover:text-white lg:hidden"
             onClick={() => {
               dialogRef.current?.showModal();
               setIsOpen(true);
@@ -107,7 +104,7 @@ export default function Header() {
         }}
       >
         <div className="flex items-center justify-between gap-4">
-          <h2 id="menu-title" className="text-lg font-semibold">
+          <h2 id="menu-title" className="text-base font-medium">
             Navigation
           </h2>
           <button
@@ -127,7 +124,7 @@ export default function Header() {
                 <a
                   href={link.href}
                   onClick={closeMenu}
-                  className="block rounded-lg px-3 py-3 text-lg text-neutral-200 hover:bg-white/5"
+                  className="block rounded px-3 py-3 text-base text-neutral-300 transition-colors hover:bg-white/5 hover:text-white"
                 >
                   {link.label}
                 </a>
@@ -137,7 +134,7 @@ export default function Header() {
               <a
                 href="mailto:ryanhermes@pm.me"
                 onClick={closeMenu}
-                className="block rounded-lg px-3 py-3 text-lg text-blue-300"
+                className="block rounded px-3 py-3 text-base text-neutral-300 transition-colors hover:bg-white/5 hover:text-white"
               >
                 Contact ↗
               </a>

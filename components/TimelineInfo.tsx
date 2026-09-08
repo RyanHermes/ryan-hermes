@@ -48,9 +48,8 @@ const experience = [
 export function TimelineInfo() {
   return (
     <div className="site-container">
-      <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+      <div className="section-rule mb-5 flex flex-wrap items-center justify-between gap-4">
         <div>
-          <p className="eyebrow mb-3">Where I’ve worked</p>
           <h2 id="experience-title" className="section-title">
             Experience
           </h2>
@@ -64,42 +63,41 @@ export function TimelineInfo() {
           LinkedIn <span aria-hidden="true">↗</span>
         </a>
       </div>
-      <ol className="divide-y divide-white/10 border-t border-white/10">
+      <ol className="space-y-2">
         {experience.map((item) => (
           <li
             key={item.company}
-            className="grid gap-3 py-7 md:grid-cols-[14rem_minmax(0,1fr)] md:gap-8"
+            className="grid gap-2 py-5 md:grid-cols-[15rem_minmax(0,1fr)] md:gap-10"
           >
             <p className="pt-1 text-sm leading-relaxed text-neutral-400">
               {item.dates}
             </p>
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-3">
-                <h3 className="text-xl font-semibold text-white">
-                  {item.company}
+                <h3 className="text-base font-medium text-neutral-100">
+                  {item.url ? (
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline-offset-4 hover:underline"
+                      aria-label={`${item.company} website`}
+                    >
+                      {item.company}
+                    </a>
+                  ) : (
+                    item.company
+                  )}
                 </h3>
                 {item.current && (
-                  <span className="rounded-full border border-blue-400/30 bg-blue-400/10 px-3 py-1 text-sm text-blue-300">
-                    Current
-                  </span>
+                  <span className="text-sm text-neutral-400">Current</span>
                 )}
               </div>
-              <p className="mt-1 text-base text-neutral-300">{item.role}</p>
+              <p className="mt-1 text-base text-neutral-400">{item.role}</p>
               {item.detail && (
                 <p className="mt-3 max-w-2xl text-base leading-relaxed text-neutral-400">
                   {item.detail}
                 </p>
-              )}
-              {item.url && (
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-link mt-2"
-                  aria-label={`${item.company} website`}
-                >
-                  Company website <span aria-hidden="true">↗</span>
-                </a>
               )}
             </div>
           </li>

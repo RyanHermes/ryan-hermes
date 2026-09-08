@@ -57,61 +57,59 @@ export function Projects() {
       aria-labelledby="projects-title"
     >
       <div className="site-container">
-        <div className="mb-10">
-          <p className="eyebrow mb-3">Selected work</p>
+        <div className="section-rule mb-10">
           <h2 id="projects-title" className="section-title">
-            Projects
+            Selected work
           </h2>
         </div>
-        <div className="space-y-7">
+        <div className="space-y-12 md:space-y-16">
           {projects.map((project) => (
             <article
               key={project.title}
-              className="grid min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] lg:grid-cols-[0.95fr_1.05fr]"
+              className="grid min-w-0 items-start gap-6 md:grid-cols-[15rem_minmax(0,1fr)] md:gap-10"
             >
               <a
                 href={project.image}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="project-image group relative block min-w-0 border-b border-white/10 lg:border-b-0 lg:border-r"
+                className="group block min-w-0"
                 aria-label={`View ${project.title} ${project.caption.toLowerCase()}`}
               >
-                <div className="relative aspect-[16/10] w-full lg:aspect-auto lg:h-full lg:min-h-[23rem]">
+                <div className="project-image relative aspect-[16/10] w-full overflow-hidden rounded">
                   <Image
                     src={project.image}
                     alt={project.alt}
                     fill
-                    sizes="(min-width: 1152px) 510px, (min-width: 1024px) 45vw, 100vw"
+                    sizes="(min-width: 768px) 240px, (min-width: 640px) calc(100vw - 64px), calc(100vw - 48px)"
                     className={project.imageClass}
                   />
                 </div>
-                <span className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-3 rounded-md border border-white/10 bg-neutral-950/95 px-3 py-2 text-sm text-neutral-200">
+                <span className="mt-3 flex items-center justify-between gap-3 text-sm text-neutral-400 transition-colors group-hover:text-neutral-200">
                   <span>{project.caption}</span>
                   <span aria-hidden="true">↗</span>
                 </span>
               </a>
-              <div className="flex min-w-0 flex-col p-6 sm:p-8">
-                <p className="text-sm text-blue-300">{project.kind}</p>
-                <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white">
+              <div className="min-w-0">
+                <h3 className="text-xl font-medium tracking-tight text-neutral-100">
                   {project.title}
                 </h3>
-                <p className="mt-4 text-base leading-relaxed text-neutral-300">
+                <p className="mt-2 text-sm text-neutral-400">{project.kind}</p>
+                <p className="mt-4 text-base leading-relaxed text-neutral-400">
                   {project.description}
                 </p>
-                <p className="mt-5 text-sm font-medium text-white">
-                  {project.detailLabel}
-                </p>
-                <p className="mt-1 text-base leading-relaxed text-neutral-400">
+                <p className="mt-3 text-base leading-relaxed text-neutral-400">
+                  <span className="sr-only">{project.detailLabel}: </span>
                   {project.contribution}
                 </p>
-                <ul className="mt-5 flex flex-wrap gap-2">
+                <ul
+                  className="inline-list mt-4 flex flex-wrap gap-x-3 gap-y-1 text-sm text-neutral-400"
+                  aria-label="Technologies"
+                >
                   {project.tech.map((tech) => (
-                    <li key={tech} className="skill-tag">
-                      {tech}
-                    </li>
+                    <li key={tech}>{tech}</li>
                   ))}
                 </ul>
-                <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+                <div className="mt-2 flex flex-wrap gap-x-6 gap-y-2">
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
@@ -120,7 +118,7 @@ export function Projects() {
                       className="text-link"
                       aria-label={`${project.title} live site`}
                     >
-                      Visit site ↗
+                      Visit site <span aria-hidden="true">↗</span>
                     </a>
                   )}
                   <a
@@ -130,17 +128,19 @@ export function Projects() {
                     className="text-link"
                     aria-label={`${project.title} source code`}
                   >
-                    Source code ↗
+                    Source code <span aria-hidden="true">↗</span>
                   </a>
                 </div>
               </div>
             </article>
           ))}
         </div>
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          <article className="min-w-0 rounded-xl border border-white/10 p-6">
-            <p className="text-sm text-blue-300">Java3D · Team project</p>
-            <h3 className="mt-2 text-xl font-semibold">EscapeJava</h3>
+        <div className="mt-12 grid gap-8 border-t border-white/10 pt-8 md:mt-16 md:grid-cols-2 md:gap-12">
+          <article className="min-w-0">
+            <h3 className="text-lg font-medium">EscapeJava</h3>
+            <p className="mt-2 text-sm text-neutral-400">
+              Java3D · Team project
+            </p>
             <p className="mt-3 text-base leading-relaxed text-neutral-400">
               A 3D escape-room game set in the University of Windsor’s Java
               Lounge, combining exploration with puzzles and obstacles.
@@ -152,12 +152,14 @@ export function Projects() {
               className="text-link mt-3"
               aria-label="EscapeJava source code"
             >
-              Source code ↗
+              Source code <span aria-hidden="true">↗</span>
             </a>
           </article>
-          <article className="min-w-0 rounded-xl border border-white/10 p-6">
-            <p className="text-sm text-blue-300">Next.js · Personal project</p>
-            <h3 className="mt-2 text-xl font-semibold">This portfolio</h3>
+          <article className="min-w-0">
+            <h3 className="text-lg font-medium">This portfolio</h3>
+            <p className="mt-2 text-sm text-neutral-400">
+              Next.js · Personal project
+            </p>
             <p className="mt-3 text-base leading-relaxed text-neutral-400">
               The source for this site: Next.js, TypeScript, and Tailwind CSS,
               deployed on Vercel. Built to make my work easy to browse on any
@@ -170,7 +172,7 @@ export function Projects() {
               className="text-link mt-3"
               aria-label="Personal Portfolio source code"
             >
-              Source code ↗
+              Source code <span aria-hidden="true">↗</span>
             </a>
           </article>
         </div>
