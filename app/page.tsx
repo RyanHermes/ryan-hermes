@@ -1,115 +1,57 @@
-"use client";
-
-import { motion, Variants } from "framer-motion";
-
 import { About } from "@/components/About";
-import Header from "@/components/Header";
+import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
-import { AuroraBackground } from "@/components/ui/aurora-background";
-import { FlipWords } from "@/components/ui/flip-words";
-import dynamic from "next/dynamic";
-// Dynamic imports to reduce initial bundle size
-const TimelineInfo = dynamic(
-  () => import("@/components/TimelineInfo").then((m) => m.TimelineInfo),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="py-20 text-center text-neutral-500">
-        Loading timeline…
-      </div>
-    ),
-  },
-);
-const Projects = dynamic(
-  () => import("@/components/Projects").then((m) => m.Projects),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="py-10 text-center text-neutral-500">
-        Loading projects…
-      </div>
-    ),
-  },
-);
-
-import { cabin, redditMono } from "./fonts";
-
-const fadeInVariants: Variants = {
-  hidden: { opacity: 0, x: -25 },
-  visible: { opacity: 1, x: 0, transition: { duration: 1, delay: 0.5 } },
-};
-
-const AnimationVariants: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1, delay: 0.5 } },
-};
-
-const ProjectsVariants: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1, delay: 0.5 } },
-};
+import { TimelineInfo } from "@/components/TimelineInfo";
 
 export default function Home() {
   return (
-    <main>
-      <Header />
-      <div>
-        <AuroraBackground>
-          <motion.div
-            className={`${redditMono.className} float absolute m-4 text-neutral-400 ~text-2xl/8xl`}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={AnimationVariants}
-          >
-            <FlipWords
-              words={[
-                "Engineering",
-                " Developing",
-                " Innovating",
-                "  Designing",
-                "  Enhancing",
-              ]}
-            />
-            the world, <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;one line at a time.
-          </motion.div>
-        </AuroraBackground>
-        <div className="gradient-bg">
-          <motion.h1
-            className={`${cabin.className} px-2 text-white ~text-2xl/9xl`}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={fadeInVariants}
-          >
-            Hi, I&apos;m{" "}
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-600 bg-clip-text text-transparent">
-              Ryan Hermes
+    <>
+      <section id="top" className="hero" aria-labelledby="intro-title">
+        <div className="site-container relative">
+          <p className="eyebrow mb-6">Software Development Engineer</p>
+          <h1 id="intro-title" className="hero-name">
+            Ryan Hermes<span className="text-blue-400">.</span>
+          </h1>
+          <p className="mt-7 max-w-2xl text-xl leading-relaxed text-neutral-300 md:text-2xl">
+            I build software at Amazon, on the Payment Products team in
+            Vancouver.
+          </p>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">
+            Previously at UrSafe Drone Solution and RIIS. This is a selection of
+            my work, from web applications to mobile and interactive
+            experiences.
+          </p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <a href="#projects" className="button-primary">
+              View my work <span aria-hidden="true">↗</span>
+            </a>
+            <a href="mailto:ryanhermes@pm.me" className="button-secondary">
+              Get in touch
+            </a>
+          </div>
+          <div className="mt-14 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/10 pt-6 text-sm text-neutral-400">
+            <span className="inline-flex items-center gap-2">
+              <span
+                className="h-1.5 w-1.5 rounded-full bg-blue-400"
+                aria-hidden="true"
+              />
+              Currently at <span className="text-neutral-200">Amazon</span>
             </span>
-          </motion.h1>
+            <span>Payment Products</span>
+            <span>Vancouver, Canada</span>
+          </div>
         </div>
-      </div>
-      <div id="about">
-        <About />
-      </div>
-      <div id="skills">
-        <Skills />
-      </div>
-      <div id="experiences" className="gradient-bg">
-        <div>
-          <TimelineInfo />
-        </div>
-      </div>
-      {/* Projects section: removed outer max-width wrapper so internal section can span available width */}
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={ProjectsVariants}
+      </section>
+      <Projects />
+      <section
+        id="experiences"
+        className="section-space border-y border-white/10 bg-neutral-950"
+        aria-labelledby="experience-title"
       >
-        <Projects />
-      </motion.div>
-    </main>
+        <TimelineInfo />
+      </section>
+      <About />
+      <Skills />
+    </>
   );
 }

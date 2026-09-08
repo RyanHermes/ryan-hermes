@@ -1,164 +1,83 @@
-"use client";
-
-import { useFadeInUp, useSlideInX, useStaggerChildren } from "@/lib/animations";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import {
-  faEnvelope,
-  faMapMarkerAlt,
-  faPhone,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { motion } from "framer-motion";
-import Link from "next/link";
-
 export function About() {
-  const fadeInVariants = useFadeInUp();
-  const staggerVariants = useStaggerChildren();
-  const itemVariants = useSlideInX();
-
   return (
-    <div className="w-full bg-black py-20" id="about">
-      <div className="mx-auto max-w-4xl px-6">
-        <motion.h2
-          className="mb-12 cursor-default text-center text-4xl font-bold text-white md:text-6xl"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          About Me
-        </motion.h2>
-
-        <div className="grid gap-12 lg:grid-cols-2">
-          <motion.div
-            variants={fadeInVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <p className="text-lg leading-relaxed text-neutral-300">
-              I&apos;m a passionate Computer Science student at the University
-              of Windsor with a strong foundation in software development, web
-              technologies, and collaborative problem-solving. My experience
-              spans frontend and backend development, mobile applications, and
-              educational technology.
+    <section id="about" className="section-space" aria-labelledby="about-title">
+      <div className="site-container grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-20">
+        <div>
+          <p className="eyebrow mb-3">A little background</p>
+          <h2 id="about-title" className="section-title">
+            About me
+          </h2>
+          <div className="mt-7 space-y-5 text-base leading-relaxed text-neutral-300 md:text-lg">
+            <p>
+              I’m a software engineer based in Vancouver. I work on Amazon’s
+              Payment Products team, following engineering roles at UrSafe Drone
+              Solution and RIIS.
             </p>
-
-            <p className="text-lg leading-relaxed text-neutral-300">
-              Through my internships at KōCH Technologies and Property Revive,
-              plus my role as a Teaching Assistant, I&apos;ve developed
-              expertise in creating user-friendly applications while mentoring
-              others in their programming journey. I excel in fast-paced
-              environments and enjoy tackling complex technical challenges.
+            <p>
+              I studied Computer Science at the University of Windsor,
+              specializing in Software Engineering with a minor in Mathematics.
+              Alongside my studies, I worked as a teaching assistant, helping
+              students develop their programming skills.
             </p>
-
-            <p className="text-lg leading-relaxed text-neutral-300">
-              When I&apos;m not coding, you can find me exploring new
-              technologies, contributing to team projects, or helping fellow
-              students master programming concepts. I&apos;m always eager to
-              learn and grow in the ever-evolving world of software development.
+            <p>
+              Outside my day-to-day work, I build web and mobile projects,
+              including websites for local businesses.
             </p>
-          </motion.div>
-
-          <motion.div
-            variants={staggerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <div>
-              <h3 className="mb-4 cursor-default text-2xl font-semibold text-white">
-                Education
-              </h3>
-              <motion.div
-                variants={itemVariants}
-                className="group cursor-default rounded-lg border border-zinc-700 bg-zinc-900 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/50 hover:bg-zinc-900/90 hover:shadow-lg hover:shadow-blue-500/10"
+          </div>
+        </div>
+        <div className="space-y-8 lg:pt-10">
+          <div className="rounded-xl border border-white/10 bg-white/[0.025] p-6">
+            <h3 className="mb-4 text-sm font-medium uppercase tracking-widest text-neutral-400">
+              Education
+            </h3>
+            <p className="text-xl font-semibold text-white">
+              BSc (Honours), Computer Science
+            </p>
+            <p className="mt-2 text-base leading-relaxed text-neutral-300">
+              Software Engineering Specialization
+              <br />
+              Minor in Mathematics
+            </p>
+            <p className="mt-4 text-base text-neutral-300">
+              University of Windsor
+            </p>
+            <p className="mt-1 text-sm text-neutral-400">
+              September 2021 — April 2025
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold">Connect with me</h3>
+            <p className="mt-3 text-base text-neutral-400">
+              Vancouver, British Columbia, Canada
+            </p>
+            <a href="mailto:ryanhermes@pm.me" className="text-link break-all">
+              ryanhermes@pm.me
+            </a>
+            <br />
+            <a href="tel:+12265061730" className="text-link">
+              +1 (226) 506-1730
+            </a>
+            <div className="mt-2 flex flex-wrap gap-x-6">
+              <a
+                href="https://github.com/RyanHermes"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-link"
               >
-                <h4 className="text-xl font-semibold text-blue-400">
-                  B.Sc. Honours Computer Science
-                </h4>
-                <p className="text-lg text-neutral-300">
-                  Honours Software Engineering Specialization
-                </p>
-                <p className="text-neutral-300">University of Windsor</p>
-                <p className="text-sm text-neutral-400">
-                  September 2021 - April 2025
-                </p>
-                <p className="text-sm text-neutral-400">Minor: Mathematics</p>
-              </motion.div>
+                GitHub ↗
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ryan--hermes/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-link"
+              >
+                LinkedIn ↗
+              </a>
             </div>
-
-            <div>
-              <h3 className="mb-4 cursor-default text-2xl font-semibold text-white">
-                Connect With Me
-              </h3>
-              <motion.div variants={itemVariants} className="space-y-3">
-                <div className="flex items-center space-x-3 text-neutral-300">
-                  <FontAwesomeIcon
-                    icon={faMapMarkerAlt}
-                    className="h-5 w-5 text-blue-400"
-                  />
-                  <span>Windsor, Ontario, Canada</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <FontAwesomeIcon
-                    icon={faEnvelope}
-                    className="h-5 w-5 text-blue-400"
-                  />
-                  <Link
-                    href="mailto:ryanhermes@pm.me"
-                    className="text-neutral-300 transition-colors hover:text-blue-400"
-                  >
-                    ryanhermes@pm.me
-                  </Link>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <FontAwesomeIcon
-                    icon={faPhone}
-                    className="h-5 w-5 text-blue-400"
-                  />
-                  <Link
-                    href="tel:+12265061730"
-                    className="text-neutral-300 transition-colors hover:text-blue-400"
-                  >
-                    +1 (226) 506-1730
-                  </Link>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <FontAwesomeIcon
-                    icon={faGithub}
-                    className="h-5 w-5 text-blue-400"
-                  />
-                  <Link
-                    href="https://github.com/RyanHermes"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-neutral-300 transition-colors hover:text-blue-400"
-                  >
-                    github.com/RyanHermes
-                  </Link>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <FontAwesomeIcon
-                    icon={faLinkedin}
-                    className="h-5 w-5 text-blue-400"
-                  />
-                  <Link
-                    href="https://www.linkedin.com/in/ryan--hermes/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-neutral-300 transition-colors hover:text-blue-400"
-                  >
-                    linkedin.com/in/ryan--hermes
-                  </Link>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

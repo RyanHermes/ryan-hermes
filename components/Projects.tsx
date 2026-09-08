@@ -1,184 +1,179 @@
-import { useFadeInUp, useSlideInX, useStaggerChildren } from "@/lib/animations";
-import { config } from "@fortawesome/fontawesome-svg-core";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-import {
-  faCodeBranch,
-  faExternalLinkAlt,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { motion } from "framer-motion";
-import Link from "next/link";
-config.autoAddCss = false;
+import Image from "next/image";
 
-type Project = {
-  title: string;
-  description: string;
-  gitUrl: string;
-  liveUrl?: string;
-  tech: string[];
-  highlight?: string;
-};
-
-const projects: Project[] = [
+const projects = [
+  {
+    title: "Cedar’s Mediterranean Lounge",
+    kind: "Business website",
+    image: "/projects/cedars.png",
+    alt: "Cedar’s Mediterranean Lounge website banner",
+    imageClass: "object-contain",
+    caption: "Restaurant website",
+    description:
+      "A website for a Windsor restaurant, bringing dining, catering, and hall-rental information together in one place.",
+    contribution:
+      "I developed and maintain the Next.js website, with dedicated service pages, responsive layouts, and an image gallery.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    gitUrl: "https://github.com/RyanHermes/cedars-mediterranean-lounge",
+    liveUrl: "https://cedarsmediterraneanlounge.ca/",
+    detailLabel: "My contribution",
+  },
   {
     title: "Tourify",
+    kind: "Android · Team project",
+    image: "/projects/tourify.png",
+    alt: "Tourify wireflow connecting destination search, exploration, saved destinations, and profile screens",
+    imageClass: "object-cover object-[center_35%]",
+    caption: "App wireflow · open to explore",
     description:
-      "An Android application developed in Kotlin with an Express.js backend and SQLite database that allows users to explore destinations, plan itineraries, and share travel experiences.",
-    gitUrl: "https://github.com/BorhanSaflo/tourify-android-app",
+      "An Android app for discovering travel destinations, planning trips, and sharing experiences. Built as a university team project.",
+    contribution:
+      "Contributed the Explore screen layout and Explore Results flow, including navigation buttons and a fix for remembered sign-in data.",
     tech: ["Kotlin", "Android", "Express", "SQLite"],
-    highlight: "Travel planning & sharing platform",
+    gitUrl: "https://github.com/BorhanSaflo/tourify-android-app",
+    detailLabel: "My contribution",
   },
   {
     title: "Volt Vista",
+    kind: "Web application · University prototype",
+    image: "/projects/volt-vista.png",
+    alt: "Volt Vista dashboard with energy consumption chart, device usage, and energy-saving suggestions",
+    imageClass: "object-contain",
+    caption: "Energy dashboard prototype",
     description:
-      "A prototype energy monitoring and management system for homeowners engineered with Next.js and TypeScript.",
+      "A home energy-management prototype that brings consumption trends, device monitoring, and overconsumption alerts into one dashboard.",
+    contribution:
+      "The interface connects overall energy usage with individual devices and recommendations. Created for a software engineering course; the dashboard presents prototype data.",
+    tech: ["Next.js", "TypeScript", "Data visualization"],
     gitUrl: "https://github.com/BorhanSaflo/volt-vista",
-    liveUrl: "https://volt-vista.vercel.app",
-    tech: ["Next.js", "TypeScript", "Energy"],
-    highlight: "Home energy insights prototype",
-  },
-  {
-    title: "Personal Portfolio",
-    description:
-      "A responsive personal website built with Next.js and Tailwind CSS, optimized for performance and hosted on Vercel with CI/CD.",
-    gitUrl: "https://github.com/RyanHermes/ryan-hermes",
-    liveUrl: "https://ryanhermes.ca",
-    tech: ["Next.js", "Tailwind CSS", "Vercel", "CI/CD"],
-    highlight: "Fast, accessible personal site",
-  },
-  {
-    title: "Cedars Lounge",
-    description:
-      "An SEO-optimized restaurant website featuring a reservation system, developed with Next.js, Tailwind CSS, and PostgreSQL.",
-    gitUrl: "https://github.com/RyanHermes/cedars-mediterranean-lounge",
-    liveUrl: "https://cedarsmediterraneanlounge.ca/",
-    tech: ["Next.js", "Tailwind CSS", "PostgreSQL", "SEO"],
-    highlight: "Restaurant UX & reservation flow",
-  },
-  {
-    title: "EscapeJava",
-    description:
-      "A Java3D project created for COMP 2800, designed to simulate an escape room game set in the Java Lounge, a frequently visited room at our university. The game challenges players with various puzzles and obstacles while exploring a 3D virtual environment.",
-    gitUrl: "https://github.com/BorhanSaflo/EscapeJava",
-    tech: ["Java", "Java3D", "Game Development"],
-    highlight: "Interactive 3D puzzle experience",
+    liveUrl: "https://volt-vista.vercel.app/",
+    detailLabel: "Project focus",
   },
 ];
-
 export function Projects() {
-  const container = useStaggerChildren(0.12);
-  const card = useSlideInX(24);
-  const heading = useFadeInUp(0.1, 40);
-
   return (
     <section
-      className="relative w-full overflow-hidden py-24 md:py-32"
       id="projects"
+      className="section-space"
+      aria-labelledby="projects-title"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.12),transparent_80%)]" />
-      <div className="mx-auto w-full max-w-[2200px] px-5 md:px-14 lg:px-24">
-        <motion.h2
-          variants={heading}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
-          className="relative z-10 bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-center text-4xl font-bold tracking-tight text-transparent md:text-6xl lg:text-7xl"
-        >
-          Featured Projects
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative z-10 mx-auto mt-6 max-w-3xl text-center text-sm leading-relaxed text-neutral-400 md:text-base lg:text-lg"
-        >
-          A concise selection highlighting breadth (frontend, backend, mobile,
-          3D) and depth in modern web engineering.
-        </motion.p>
-
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="mt-20 grid w-full gap-10 [grid-template-columns:repeat(auto-fill,minmax(320px,1fr))]"
-        >
+      <div className="site-container">
+        <div className="mb-10">
+          <p className="eyebrow mb-3">Selected work</p>
+          <h2 id="projects-title" className="section-title">
+            Projects
+          </h2>
+        </div>
+        <div className="space-y-7">
           {projects.map((project) => (
-            <motion.article
+            <article
               key={project.title}
-              variants={card}
-              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-800/70 bg-gradient-to-br from-neutral-900/80 via-neutral-900/50 to-neutral-800/40 p-[1px] shadow-[0_0_0_1px_rgba(255,255,255,0.03)] backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10"
+              className="grid min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] lg:grid-cols-[0.95fr_1.05fr]"
             >
-              <div className="relative z-10 flex h-full flex-col rounded-2xl bg-neutral-900/70 p-6 transition-colors duration-300 group-hover:bg-neutral-900/80">
-                <div className="mb-5 flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="cursor-default text-xl font-semibold text-white transition-colors duration-300 group-hover:text-blue-400">
-                      {project.title}
-                    </h3>
-                    {project.highlight && (
-                      <p className="mt-1 text-xs font-medium uppercase tracking-wide text-blue-400/70">
-                        {project.highlight}
-                      </p>
-                    )}
-                  </div>
-                  <div className="flex shrink-0 gap-2">
-                    <Link
-                      href={project.gitUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${project.title} source code`}
-                      className="inline-flex items-center justify-center rounded-md border border-neutral-700/60 bg-neutral-800/60 px-3 py-2 text-xs font-medium text-neutral-200 ring-offset-neutral-900 transition-all hover:border-blue-500/60 hover:bg-blue-600/20 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/70 focus-visible:ring-offset-2"
-                    >
-                      <FontAwesomeIcon
-                        icon={faCodeBranch}
-                        className="h-3 w-3"
-                      />
-                      <span className="ml-1 hidden md:inline">Code</span>
-                    </Link>
-                    {project.liveUrl && (
-                      <Link
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${project.title} live demo`}
-                        className="inline-flex items-center justify-center rounded-md border border-green-600/50 bg-green-700/20 px-3 py-2 text-xs font-medium text-green-300 ring-offset-neutral-900 transition-all hover:border-green-500/70 hover:bg-green-600/30 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500/70 focus-visible:ring-offset-2"
-                      >
-                        <FontAwesomeIcon
-                          icon={faExternalLinkAlt}
-                          className="h-3 w-3"
-                        />
-                        <span className="ml-1 hidden md:inline">Live</span>
-                      </Link>
-                    )}
-                  </div>
+              <a
+                href={project.image}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-image group relative block min-w-0 border-b border-white/10 lg:border-b-0 lg:border-r"
+                aria-label={`View ${project.title} ${project.caption.toLowerCase()}`}
+              >
+                <div className="relative aspect-[16/10] w-full lg:aspect-auto lg:h-full lg:min-h-[23rem]">
+                  <Image
+                    src={project.image}
+                    alt={project.alt}
+                    fill
+                    sizes="(min-width: 1152px) 510px, (min-width: 1024px) 45vw, 100vw"
+                    className={project.imageClass}
+                  />
                 </div>
-
-                <p className="mb-5 cursor-default text-sm leading-relaxed text-neutral-300 transition-colors duration-300 group-hover:text-neutral-100">
+                <span className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-3 rounded-md border border-white/10 bg-neutral-950/95 px-3 py-2 text-sm text-neutral-200">
+                  <span>{project.caption}</span>
+                  <span aria-hidden="true">↗</span>
+                </span>
+              </a>
+              <div className="flex min-w-0 flex-col p-6 sm:p-8">
+                <p className="text-sm text-blue-300">{project.kind}</p>
+                <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white">
+                  {project.title}
+                </h3>
+                <p className="mt-4 text-base leading-relaxed text-neutral-300">
                   {project.description}
                 </p>
-
-                <div className="mt-auto flex flex-wrap gap-2">
-                  {project.tech.map((technology) => (
-                    <span
-                      key={technology}
-                      className="cursor-default rounded-full border border-blue-600/30 bg-blue-600/15 px-3 py-1 text-xs text-blue-300 backdrop-blur-sm transition-all duration-300 group-hover:border-blue-500/50 group-hover:bg-blue-600/30 group-hover:text-blue-200"
-                    >
-                      {technology}
-                    </span>
+                <p className="mt-5 text-sm font-medium text-white">
+                  {project.detailLabel}
+                </p>
+                <p className="mt-1 text-base leading-relaxed text-neutral-400">
+                  {project.contribution}
+                </p>
+                <ul className="mt-5 flex flex-wrap gap-2">
+                  {project.tech.map((tech) => (
+                    <li key={tech} className="skill-tag">
+                      {tech}
+                    </li>
                   ))}
+                </ul>
+                <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-link"
+                      aria-label={`${project.title} live site`}
+                    >
+                      Visit site ↗
+                    </a>
+                  )}
+                  <a
+                    href={project.gitUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-link"
+                    aria-label={`${project.title} source code`}
+                  >
+                    Source code ↗
+                  </a>
                 </div>
               </div>
-              <div
-                className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 mix-blend-screen blur transition duration-500 group-hover:opacity-100"
-                style={{
-                  background:
-                    "linear-gradient(120deg, rgba(59,130,246,0.25), rgba(16,185,129,0.15), rgba(147,51,234,0.25))",
-                }}
-              />
-            </motion.article>
+            </article>
           ))}
-        </motion.div>
+        </div>
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          <article className="min-w-0 rounded-xl border border-white/10 p-6">
+            <p className="text-sm text-blue-300">Java3D · Team project</p>
+            <h3 className="mt-2 text-xl font-semibold">EscapeJava</h3>
+            <p className="mt-3 text-base leading-relaxed text-neutral-400">
+              A 3D escape-room game set in the University of Windsor’s Java
+              Lounge, combining exploration with puzzles and obstacles.
+            </p>
+            <a
+              href="https://github.com/BorhanSaflo/EscapeJava"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-link mt-3"
+              aria-label="EscapeJava source code"
+            >
+              Source code ↗
+            </a>
+          </article>
+          <article className="min-w-0 rounded-xl border border-white/10 p-6">
+            <p className="text-sm text-blue-300">Next.js · Personal project</p>
+            <h3 className="mt-2 text-xl font-semibold">This portfolio</h3>
+            <p className="mt-3 text-base leading-relaxed text-neutral-400">
+              The source for this site: Next.js, TypeScript, and Tailwind CSS,
+              deployed on Vercel. Built to make my work easy to browse on any
+              screen.
+            </p>
+            <a
+              href="https://github.com/RyanHermes/ryan-hermes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-link mt-3"
+              aria-label="Personal Portfolio source code"
+            >
+              Source code ↗
+            </a>
+          </article>
+        </div>
       </div>
     </section>
   );

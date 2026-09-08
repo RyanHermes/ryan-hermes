@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 config.autoAddCss = false;
 
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
@@ -12,32 +13,33 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ryan Hermes - Full Stack Developer",
+  title: "Ryan Hermes | Software Development Engineer at Amazon",
   description:
-    "Computer Science student and developer specializing in web applications, mobile development, and software engineering.",
+    "Ryan Hermes is a Software Development Engineer on Amazon’s Payment Products team in Vancouver. Explore his projects, engineering experience, and background.",
+  alternates: { canonical: "https://www.ryanhermes.ca" },
   keywords:
     "Ryan Hermes, developer, software engineer, full stack, React, Next.js, TypeScript, web development",
   authors: [{ name: "Ryan Hermes" }],
   creator: "Ryan Hermes",
   openGraph: {
-    title: "Ryan Hermes - Full Stack Developer",
+    title: "Ryan Hermes | Software Development Engineer at Amazon",
     description:
-      "Computer Science student and developer portfolio showcasing projects and experience",
-    url: "https://ryanhermes.ca",
+      "Software Development Engineer at Amazon in Vancouver. Selected projects, experience, and background.",
+    url: "https://www.ryanhermes.ca",
     siteName: "Ryan Hermes Portfolio",
     type: "website",
     locale: "en_CA",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ryan Hermes - Full Stack Developer",
-    description: "Computer Science student and developer portfolio",
+    title: "Ryan Hermes | Software Development Engineer at Amazon",
+    description: "Software Development Engineer at Amazon in Vancouver.",
   },
   robots: {
     index: true,
     follow: true,
   },
-  metadataBase: new URL("https://ryanhermes.ca"),
+  metadataBase: new URL("https://www.ryanhermes.ca"),
 };
 
 export default function RootLayout({
@@ -56,7 +58,8 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <main id="main-content" className="flex-grow">
+        <Header />
+        <main id="main-content" className="flex-grow" tabIndex={-1}>
           {children}
         </main>
         <Footer />

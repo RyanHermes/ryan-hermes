@@ -1,59 +1,47 @@
-# Personal Portfolio
+# Ryan Hermes — Personal Portfolio
 
-This repository contains the source code for my personal portfolio website, which can be viewed live at [ryanhermes.ca](https://ryanhermes.ca).
+Live website: [www.ryanhermes.ca](https://www.ryanhermes.ca).
 
-This is a responsive personal website built with Next.js and Tailwind CSS, optimized for performance and hosted on Vercel with CI/CD.
+A Next.js and TypeScript portfolio, styled with Tailwind CSS and deployed on Vercel. The page presents Ryan’s current role, selected projects, experience, education, and contact information.
 
-The project is built using a modern technology stack to ensure performance, scalability, and code quality.
+## Development
 
-## Tech Stack
+Use Node.js 20 or newer and the pnpm version pinned in `package.json`.
 
-- **Framework**: Next.js
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Code Quality**: ESLint & Prettier
+```sh
+pnpm install --frozen-lockfile
+pnpm dev
+```
 
-## Getting Started
+## Validation
 
-Follow these instructions to get a local copy up and running for development and testing purposes.
+```sh
+pnpm build
+```
 
-### Prerequisites
+The production build runs compilation, lint, and TypeScript checks. Browser checks cover 320px, 390px, and desktop layouts, section links, project images, and mobile menu focus, Escape, and focus restoration.
 
-You will need to have Node.js and npm installed on your machine.
+## Content
 
-### Installation
+- `app/page.tsx`: introduction and section order
+- `components/TimelineInfo.tsx`: employment history
+- `components/Projects.tsx`: project descriptions, links, and visuals
+- `components/About.tsx`: biography, education, and contact details
+- `components/Skills.tsx`: technology groups
+- `app/layout.tsx`: search metadata and canonical URL
 
-1.  **Clone the repository:**
+Role names and dates were checked against Ryan’s LinkedIn profile on September 8, 2026. His Amazon announcement identifies the Payment Products team in Vancouver. Earlier Property Revive experience and the Mathematics minor are retained from the existing portfolio.
 
-    ```sh
-    git clone [https://github.com/RyanHermes/ryan-hermes.git](https://github.com/RyanHermes/ryan-hermes.git)
-    ```
+## Project visual sources
 
-2.  **Navigate to the project directory:**
+Existing project assets are reused with their associated projects; no generated screenshots or performance figures are used.
 
-    ```sh
-    cd ryan-hermes
-    ```
+- Cedar’s banner: [project repository](https://github.com/RyanHermes/cedars-mediterranean-lounge/blob/main/public/assets/images/cedars_banner.png)
+- Tourify wireflow: [team project repository](https://github.com/BorhanSaflo/tourify-android-app/blob/main/docs/tourify-wireflow.png)
+- Volt Vista dashboard: [project README](https://github.com/BorhanSaflo/volt-vista#screenshots)
 
-3.  **Install dependencies:**
-    This project uses npm for package management, as indicated by the `package-lock.json` file.
+Tourify contribution details are based on RyanHermes’s commits to the Explore and Explore Results screens. Volt Vista is described as a university prototype without assigning unverified individual contributions.
 
-    ```sh
-    npm install
-    ```
+## Deployment
 
-4.  **Run the development server:**
-
-    ```sh
-    npm run dev
-    ```
-
-5.  Open [http://localhost:3000](http://localhost:3000) in your browser to see the local version.
-
-## Contact
-
-**Ryan Hermes**
-
-- **Email**: ryanhermes@pm.me
-- **Website**: [ryanhermes.ca](https://ryanhermes.ca)
-- **LinkedIn**: [linkedin.com/in/ryan--hermes](https://linkedin.com/in/ryan--hermes)
+Use the existing Vercel project `ryan-hermes` in `abboudy-ryans-projects`, serving `www.ryanhermes.ca` and `ryanhermes.ca`. The GitHub repository’s website link should use the custom domain.
